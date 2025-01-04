@@ -21,7 +21,8 @@ int main()
     vector<bool> mst_set(node, false);
     vector<int> parent(node, -1);
     vector<int> key(node, INT_MAX);
-
+    
+    //pair<weight, node>
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     key[0] = 0;
     parent[0] = -1;
