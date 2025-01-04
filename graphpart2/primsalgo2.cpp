@@ -3,6 +3,18 @@
 #define iint long long
 #define uwu '\n'
 using namespace std;
+
+void print(map<int, list<pair<int, int>>> &adjlist)
+{
+    for (auto &x : adjlist)
+    {
+        cout << x.first << " -> ";
+        for (auto &y : x.second)
+            cout << y.first << " " << y.second << " , ";
+        cout << uwu;
+    }
+}
+
 int main()
 {
     Onii_chan;
@@ -16,7 +28,7 @@ int main()
         adjlist[u].push_back({w, v});
         adjlist[v].push_back({w, u});
     }
-
+    //print(adjlist);
     // pair<weight , node>
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
@@ -27,7 +39,7 @@ int main()
     key[0] = 0;
     pq.push({0, 0});
 
-    for (int i = 0; i < node; i++)
+    while(!pq.empty())
     {
         int temp = pq.top().second;
         pq.pop();
@@ -54,19 +66,18 @@ int main()
 }
 
 /*
-9 12
-0 1 10
-0 3 40
-0 6 90
-1 6 40
-1 4 60
-1 2 20
-2 8 30
-3 4 50
-4 5 70
+9 11
+0 1 30
+1 2 60
+2 3 30
+3 4 30
+4 2 60
 2 5 80
-2 7 50
-6 7 10
+5 6 30
+0 7 30
+8 0 40
+0 4 20
+7 1 20
 
 
 
