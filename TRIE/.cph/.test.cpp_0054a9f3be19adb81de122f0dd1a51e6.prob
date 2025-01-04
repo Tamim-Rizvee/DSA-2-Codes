@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"c:\\Users\\Tamim\\Desktop\\dsa-2\\TRIE\\test.cpp","tests":[{"id":1734759806432,"input":"8\n1 ACG\n1 TC\n1 TCCGTGC\n1 TCGCCGT\n2\n1 ACGT\n1 ACGTGCGT\n2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Tamim\\Desktop\\dsa-2\\TRIE\\test.cpp","group":"local","local":true}
