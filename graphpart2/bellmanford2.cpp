@@ -17,6 +17,7 @@ void bellmanFord(vector<vector<pair<int, int>>> &graph, vector<int> &dist, int n
                 if (dist[j] != INT_MAX && dist[j] + w < dist[v])
                 {
                     dist[v] = dist[j] + w;
+
                 }
             }
         }
