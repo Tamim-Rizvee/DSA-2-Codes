@@ -53,16 +53,17 @@ int main()
             graph[u].push_back({v, w});
             graph[v].push_back({u, w});
         }
-        int min = 1;
+        int minIndex = 1;
         for (int i = 1; i <= node; i++)
         {
             cin >> slowfact[i];
-            if (slowfact[i] < slowfact[min])
-                min = i;
+            if (slowfact[i] < slowfact[minIndex])
+                minIndex = i;
         }
         dijsktra(graph, dist, node, slowfact);
-        dijsktra(graph, dist1, node, slowfact, min);
-        cout << dist[min] + dist1[node] << uwu;
+        dijsktra(graph, dist1, node, slowfact, minIndex);
+        int ans = min(dist[node], dist1[node] + dist[minIndex]);
+        cout << ans << uwu;
     }
     return 0;
 }

@@ -4,76 +4,95 @@
 #define uwu '\n'
 using namespace std;
 
-class Prioroty_queue
+class Priority_queue
 {
     vector<int> max_heap;
-    void heapify_up(int i);
-    void heapify_down(int i);
+    void heapyfy_up(int i)
+    {
+        int parent = (i - 1) / 2;
+        if (i == 0 || max_heap[parent] >= max_heap[i])
+            return;
+        else
+        {
+            swap(max_heap[parent], max_heap[i]);
+            heapyfy_up(parent);
+        }
+    }
+
+    void heapify_down(int i)
+    {
+        int left = 2 * i + 1, right = 2 * i + 2, largest = i;
+        if(left < max_heap.size() && max_heap[left] > max_heap[largest])
+            largest = left;
+        else if(right < max_heap.size() && max_heap[right] > max_heap[largest])
+            largest = right;
+        if(largest != i)
+        {
+            swap(max_heap[i], max_heap[largest]);
+            heapify_down(largest);
+        }
+    }
 
 public:
-    void Push(int value);
-    int Top();
-    void Pop();
-    bool Empty();
+    void Push(int x)
+    {
+        max_heap.push_back(x);
+        heapyfy_up(max_heap.size() - 1);
+    }
+
+    int Top()
+    {
+        return max_heap[0];
+    }
+
+    void Pop()
+    {
+        if(max_heap.size() == 0)
+            return;
+        swap(max_heap[0], max_heap[max_heap.size() - 1]);
+        max_heap.pop_back();
+        heapify_down(0);
+    }
+
+    bool Empty()
+    {
+        return max_heap.size() == 0;
+    }
 };
 
-void Prioroty_queue::heapify_up(int i)
+void percolate_down(int index, vector<int> &arr, int n)
 {
-    int parent = (i - 1) / 2;
-    if (i == 0 || max_heap[parent] >= max_heap[i])
-        return;
-    if (max_heap[parent] < max_heap[i])
-    {
-        swap(max_heap[parent], max_heap[i]);
-        heapify_up(parent);
-    }
-}
-
-void Prioroty_queue::heapify_down(int i)
-{
-    int left = 2 * i + 1, right = 2 * i + 2, largest = i;
-    if(left < max_heap.size() && max_heap[left] > max_heap[largest])
+    int left = 2 * index + 1, right = 2 * index + 2, largest = index;
+    if (left < n && arr[left] > arr[largest])
         largest = left;
-    
-    if(right < max_heap.size() && max_heap[right] > max_heap[largest])
+    if (right < n && arr[right] > arr[largest])
         largest = right;
-    if(largest != i)
+    if (largest != index)
     {
-        swap(max_heap[i], max_heap[largest]);
-        heapify_down(largest);
+        swap(arr[index], arr[largest]);
+        percolate_down(largest, arr, n);
     }
 }
 
-void Prioroty_queue::Push(int value)
+void heap_sort(vector<int> &arr)
 {
-    max_heap.push_back(value);
-    heapify_up(max_heap.size() - 1);
-}
-
-int Prioroty_queue::Top()
-{
-    return max_heap[0];
-}
-
-void Prioroty_queue::Pop()
-{
-    swap(max_heap[0], max_heap[max_heap.size() - 1]);
-    max_heap.pop_back();
-    heapify_down(0);
-}
-
-bool Prioroty_queue::Empty()
-{
-    if(max_heap.size() == 0)
-        return true;
-    return false;
+    int n = arr.size();
+    for (int i = n / 2 - 1; i >= 0; i--)
+    {
+        percolate_down(i, arr, n);
+    }
+    for (int i = n - 1; i > 0; i--)
+    {
+        swap(arr[0], arr[i]);
+        percolate_down(0, arr, i);
+    }
 }
 
 int main()
 {
     Onii_chan;
     vector<int> arr = {0, 4, 5, 6, 3};
-    Prioroty_queue pq;
+    Priority_queue pq;
     for (int i = 0; i < arr.size(); i++)
     {
         pq.Push(arr[i]);
@@ -83,5 +102,10 @@ int main()
         cout << pq.Top() << " ";
         pq.Pop();
     }
+    cout << uwu;
+    vector<int> arr2 = {4, 1, 3, 9, 7};
+    heap_sort(arr2);
+    for (auto &x : arr2)
+        cout << x << " ";
     return 0;
 }

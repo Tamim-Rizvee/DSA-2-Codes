@@ -22,6 +22,8 @@ void bellmanFord(vector<vector<pair<int, int>>> &graph, vector<int> &dist, int n
             }
         }
     }
+
+    
 }
 
 int main()
