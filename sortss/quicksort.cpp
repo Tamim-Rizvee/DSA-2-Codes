@@ -8,7 +8,7 @@ using namespace std;
 int partition(vector<int> &arr , int si , int ei)
 {
     int i = si - 1;
-    for (int j = si; j < ei; j++)
+    for (int j = si; j < ei - 1; j++)
     {
         if(arr[j] <= arr[ei]) i++ , swap(arr[i], arr[j]);
     }
