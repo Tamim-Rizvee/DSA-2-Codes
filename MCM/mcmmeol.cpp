@@ -45,7 +45,7 @@ int main()
     vector<int> arr = {1, 2, 3, 4, 3};
     int n = arr.size();
     vector<vector<int>> dp(n , vector<int>(n , -1));
-    vector<vector<int>> bracket(n, vector<int>(n, -1)); // to prionting the sequcnce
+    vector<vector<int>> bracket(n, vector<int>(n, -1)); // to printing the sequcnce
     cout << mcmMemo(arr, 1, n - 1, dp, bracket) << uwu;
     print_order(1 , n - 1 , n , bracket , 'A');
     return 0;

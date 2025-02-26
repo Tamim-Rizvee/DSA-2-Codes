@@ -25,6 +25,14 @@ int mcm_tabul(vector<int> &arr)
             }
         }
     }
+
+    for(auto x: dp)
+    {
+        for(auto y: x)
+            cout << y << " ";
+        cout << uwu;
+    }
+
     return dp[1][n - 1];
 }
 
