@@ -11,7 +11,7 @@ void print_perm(string name , string ans = "")
         cout << ans << uwu;
         return;
     }
-    for (int i = 0; i < name.size(); i++)
+    for (int i = 0; i <(int) name.size(); i++)
     {
         print_perm(name.substr(0, i) + name.substr(i + 1), ans + name[i]);
     }
